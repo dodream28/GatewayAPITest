@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Demo Gateway Site</title>
+  <link rel="icon" href="/assets/logo.svg" />
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <div class="nav">
+    <div class="container navbar">
+      <a class="brand" href="/index.html">
+        <div class="logo">◎</div>
+        <div>
+          <strong>Demo Gateway Site</strong>
+          <span>AKS · Gateway API · NGINX Static</span>
+        </div>
+      </a>
+      <nav class="menu">
+        <a class="pill" data-nav href="/index.html">Home</a>
+        <a class="pill" data-nav href="/about.html">About</a>
+        <a class="pill" data-nav href="/docs.html">Docs</a>
+        <a class="pill" data-nav href="/status.html">Status</a>
+        <a class="pill" data-nav href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <h1>Contact</h1>
+          <p>실제 전송 기능은 없고, UI 형태만 갖춘 “있어 보이는” 페이지입니다.</p>
+          <div class="badges">
+            <div class="badge">static form</div>
+            <div class="badge">no backend</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-body">
+            <h3 style="margin:0 0 10px;">Form (mock)</h3>
+            <div class="kv">
+              <div class="item">
+                <div class="k">Subject</div>
+                <div class="v">Gateway API test</div>
+              </div>
+              <div class="item">
+                <div class="k">Response SLA</div>
+                <div class="v">N/A</div>
+              </div>
+            </div>
+            <hr class="sep" />
+            <p class="small">폼 동작이 필요하면, 별도 API(예: /api/contact)만 추가하면 됩니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="row">
+        <div>© Demo Gateway Site</div>
+        <div class="small">/contact.html</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+deployment:
+  replicas: 2
+# Linux node에만 배치
+nodeSelector:
+  kubernetes.io/os: linux
+# Gateway API Provider 활성화 (핵심)
+providers:
+  kubernetesGateway:
+    enabled: true
+    # 표준 HTTPRoute만 쓸 거면 false 유지.
+    # TCPRoute/TLSRoute 등 experimental까지 가면 true로 + experimental CRD 설치 필요.
+    experimentalChannel: false
+# Traefik entryPoints: HTTP(80)만 우선 테스트 권장 (TLS는 나중에)
+ports:
+  web:
+    port: 80
+    expose:
+      default: true
+  websecure:
+    port: 443
+    expose:
+      default: false
+service:
+  enabled: true
+  type: LoadBalancer
+  spec:
+    loadBalancerIP: "170.0.7.250"  #
+    service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: "/ping"
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+
+ping:
+  enabled: true
+
+readinessProbe:
+  path: /ping
+  port: 9000
+
+livenessProbe:
+  path: /ping
+  port: 9000
+
+logs:
+  general:
+    level: INFO
+
+api:
+  dashboard: false

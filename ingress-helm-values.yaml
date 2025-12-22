@@ -1,0 +1,35 @@
+controller:
+  extraVolumes:
+    - name: secrets-store-inline
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "hsed-cert01" # secretProviderClass 값 확인
+
+  extraVolumeMounts:
+    - name: secrets-store-inline
+      mountPath: "/mnt/secrets-store"
+      readOnly: true
+
+  replicaCount: 2
+
+  ingressClassResource:
+    name: "nginx-hsed" # ingressClass Name 값 확인
+    enabled: true
+    controllerValue: "k8s.io/nginx-hsed" # ingressClass Name 값 확인
+
+  ingressClassByName: true
+
+  nodeSelector:
+    kubernetes.io/os: linux
+
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: "/healthz"
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-ipv4: "65.250.63.253" # ingress IP 확인
+
+defaultBackend:
+  nodeSelector:
+    kubernetes.io/os: linux
